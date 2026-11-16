@@ -1,0 +1,19 @@
+# Ignorar carpetas de datos completas
+data/*
+results/*
+logs/*
+benchmarks/*
+
+# Excepciones: mantener archivos .gitkeep para conservar la estructura de carpetas
+!data/raw/.gitkeep
+!results/.gitkeep
+!logs/.gitkeep
+!benchmarks/.gitkeep
+
+# Excluir entornos virtuales, caches, archivos .zip, archivo .snakemake
+.venv/
+__pycache__/
+.Rhistory
+.DS_Store
+*.zip
+.snakemake/
