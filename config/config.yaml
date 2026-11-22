@@ -1,0 +1,28 @@
+data:
+  counts: "data/raw/counts.csv.gz"
+  metadata: "data/raw/metadata.csv.gz"
+
+design:
+  condition_column: "site"
+  test: "Primary_Solid_Tumor"
+  reference: "Solid_Tissue_Normal"
+  covariates: ["plate"]
+  min_residual_df: 3           #arreglar problema de subsets pequeños, lo que viene indicado en la tarea
+
+filter:
+  min_count: 10                # >= min_count reads in >= (smallest group size) samples
+
+deseq2:
+  alpha: 0.05
+  lfc_threshold: 1
+
+subsampling:
+  sizes: [3, 5, 10, 20]        # samples PER GROUP
+  seeds: [1, 2, 3, 4, 5]
+
+enrichment:
+  libraries:                   # short name -> Enrichr library
+    go_bp: "GO_Biological_Process_2023"
+    reactome: "Reactome_2022"
+  subsets: ["full", "n3_s1"]   # sobre qué muestras se hace enriquecimiento, según lo que ponga el pdf. n3_s1 indica size 3 seed 1
+  top_terms: 10
