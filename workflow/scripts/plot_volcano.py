@@ -21,7 +21,7 @@ lfc_threshold = snakemake.params.lfc_threshold
 
 # Load results.tsv
 print(f"Reading DESeq2 results from: {results_path}")
-df = pd.read_csv(results_path, sep="\t")
+res_df = pd.read_csv(results_path, sep="\t")
 
 # Ensure gene_id column is present
 if "gene_id" not in res_df.columns:
