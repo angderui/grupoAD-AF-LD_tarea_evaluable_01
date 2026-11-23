@@ -27,5 +27,6 @@ rule all:
 
 include: "rules/samples.smk"
 include: "rules/deseq2.smk"
+include: "rules/plots.smk"
 include: "rules/enrichment.smk"
 include: "rules/summary.smk"
