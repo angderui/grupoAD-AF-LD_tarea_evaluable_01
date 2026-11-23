@@ -32,6 +32,12 @@ counts_df = counts_df.loc[:, common_samples]
 
 assert list(counts_df.columns) == list(samples_df.index), "Error: Samples do not match."
 
+print(
+    f"[INFO] Dimensiones iniciales de counts: {counts_df.shape} "
+    f"(Esperado en full: ~20502 genes x 75 muestras)",
+    file=sys.stderr,
+)
+
 # Ensure categorical types and reference level order
 samples_df[condition_column] = pd.Categorical(
     samples_df[condition_column],
@@ -47,6 +53,12 @@ min_samples = int(group_sizes.min())
 
 keep_genes = (counts_df >= min_count).sum(axis=1) >= min_samples
 counts_filtered_df = counts_df.loc[keep_genes]
+
+print(
+    f"[INFO] Genes tras el filtrado (min_count={min_count}, min_samples={min_samples}): "
+    f"{counts_filtered_df.shape[0]} (Esperado en full: 17606)",
+    file=sys.stderr,
+)
 
 # PyDESeq2 expects samples in rows and genes in columns
 counts_mat_filtered = counts_filtered_df.T
