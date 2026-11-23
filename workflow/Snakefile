@@ -4,7 +4,25 @@ include: "rules/common.smk"
 
 rule all:
     input:
-        miau miau miau
+        # Block A: full cohort
+        "results/full/deseq2/results.tsv",
+        "results/full/deseq2/de_genes.tsv",
+        "results/full/plots/volcano.png",
+        "results/full/plots/ma.png",
+
+        # Block B (+ D.4): enrichment of up/down genes in each library
+        expand(
+            "results/{subset}/enrichment/{library}_{direction}.tsv",
+            subset=ENRICH_SUBSETS,
+            library=LIBRARIES,
+            direction=DIRECTIONS,
+        ),
+        expand(
+            "results/{subset}/enrichment/{library}_{direction}.png",
+            subset=ENRICH_SUBSETS,
+            library=LIBRARIES,
+            direction=DIRECTIONS,
+        )
 
 
 include: "rules/samples.smk"
