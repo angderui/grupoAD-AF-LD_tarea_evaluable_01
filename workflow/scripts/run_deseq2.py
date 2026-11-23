@@ -5,7 +5,9 @@ from pydeseq2.dds import DeseqDataSet
 from pydeseq2.ds import DeseqStats
 
 # Redirect stderr to the Snakemake log file
-sys.stderr = open(snakemake.log[0], "w")
+log_fh = open(snakemake.log[0], "w")
+sys.stdout = log_fh
+sys.stderr = log_fh
 
 # Read inputs, outputs and parameters
 samples_path = snakemake.input.samples

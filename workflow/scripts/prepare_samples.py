@@ -2,7 +2,9 @@ import sys
 import pandas as pd
 
 # Redirect stderr to the Snakemake log file
-sys.stderr = open(snakemake.log[0], "w")
+log_fh = open(snakemake.log[0], "w")
+sys.stdout = log_fh
+sys.stderr = log_fh
 
 # Read inputs, outputs and parameters from the Snakemake object
 counts_path = snakemake.input.counts
