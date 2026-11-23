@@ -11,8 +11,18 @@ rule all:
         "results/full/plots/ma.png",
 
         # Block B (+ D.4): enrichment of up/down genes in each library
-        
-
+        expand(
+            "results/{subset}/enrichment/{library}_{direction}.tsv",
+            subset=ENRICH_SUBSETS,
+            library=LIBRARIES,
+            direction=DIRECTIONS,
+        ),
+        expand(
+            "results/{subset}/enrichment/{library}_{direction}.png",
+            subset=ENRICH_SUBSETS,
+            library=LIBRARIES,
+            direction=DIRECTIONS,
+        )
 
 
 include: "rules/samples.smk"
