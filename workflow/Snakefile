@@ -24,6 +24,10 @@ rule all:
             direction=DIRECTIONS,
         )
 
+        # Block C
+
+        # Block D
+
 
 include: "rules/samples.smk"
 include: "rules/deseq2.smk"
