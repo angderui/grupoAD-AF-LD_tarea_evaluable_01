@@ -16,9 +16,18 @@ condition_column = snakemake.params.condition_column
 counts_df = pd.read_csv(counts_path, index_col=0, low_memory=False)
 metadata = pd.read_csv(metadata_path, index_col=0, low_memory=False)
 
+print(
+    f"[INFO] Before alignment -> counts: {counts_df.shape}, metadata: {metadata.shape}"
+)
+
 # Align sample metadata to match count matrix columns
 common_samples = counts_df.columns.intersection(metadata.index)
 metadata = metadata.loc[common_samples].copy()
+
+print(
+    f"[INFO] After alignment -> common_samples: {len(common_samples)}, "
+    f"counts: {counts_df.shape}, metadata: {metadata.shape}"
+)
 
 # Ensure condition column exists
 if condition_column not in metadata.columns:
