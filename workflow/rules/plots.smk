@@ -1,10 +1,10 @@
-rule plot_volcano_full:
+rule plot_volcano:
     input:
-        results="results/full/deseq2/results.tsv",
+        results="results/{subset}/deseq2/results.tsv",
     output:
-        volcano="results/full/plots/volcano.png",
+        volcano="results/{subset}}/plots/volcano.png",
     log:
-        "logs/full/plot_volcano.log",
+        "logs/{subset}/plot_volcano.log",
     conda:
         "../envs/python.yaml"
     params:
@@ -13,13 +13,13 @@ rule plot_volcano_full:
     script:
         "../scripts/plot_volcano.py"
 
-rule plot_ma_full:
+rule plot_ma:
     input:
-        results="results/full/deseq2/results.tsv",
+        results="results/{subset}/deseq2/results.tsv",
     output:
-        ma="results/full/plots/ma.png",
+        ma="results/{subset}/plots/ma.png",
     log:
-        "logs/full/plot_ma.log",
+        "logs/{subset}/plot_ma.log",
     conda:
         "../envs/python.yaml"
     params:
