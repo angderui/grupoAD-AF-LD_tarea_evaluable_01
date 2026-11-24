@@ -2,7 +2,7 @@ rule plot_volcano:
     input:
         results="results/{subset}/deseq2/results.tsv",
     output:
-        volcano="results/{subset}}/plots/volcano.png",
+        volcano="results/{subset}/plots/volcano.png",
     log:
         "logs/{subset}/plot_volcano.log",
     conda:
