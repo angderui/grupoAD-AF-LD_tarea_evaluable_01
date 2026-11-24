@@ -1,7 +1,7 @@
 import sys
 import pandas as pd
 
-# Redirect stderr to the Snakemake log file
+# Redirect stdout and stderr to the Snakemake log file
 log_fh = open(snakemake.log[0], "w")
 sys.stdout = log_fh
 sys.stderr = log_fh
