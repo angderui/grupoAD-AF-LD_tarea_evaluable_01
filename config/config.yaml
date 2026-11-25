@@ -24,5 +24,7 @@ enrichment:
   libraries:                   # short name -> Enrichr library
     go_bp: "GO_Biological_Process_2023"
     reactome: "Reactome_2022"
-  subsets: ["full", "n3_s1"]   # sobre qué muestras se hace enriquecimiento, según lo que ponga el pdf. n3_s1 indica size 3 seed 1
+  subsets: ["full"]            # sobre qué muestras se hace enriquecimiento, según lo que ponga el pdf. n3_s1 indica size 3 seed 1
   top_terms: 10
+
+# TODO: poner todos los subsets a analizar de la forma subsets: ["full", "n3_s1"]
